@@ -7,13 +7,7 @@ new_df <- data.frame(selected_columns)
 head(new_df)
 new_df <- new_df[complete.cases(new_df$residualsodiumcarbonate), ]
 print(names(new_df))
-head(new_df)
-aggregated_df <- aggregate(residualsodiumcarbonate ~ state + year, data = new_df, FUN = mean)
-# Convert all letters in the state column to uppercase
-aggregated_df$state <- toupper(aggregated_df$state)
-
-aggregated_df
-
+new_df
 gdp_df <- read.csv("gdp.csv")
 gdp_df$YEAR <- substring(gdp_df$YEAR, 1, nchar(gdp_df$YEAR) - 3)
 gdp_df <- as.data.frame(lapply(gdp_df, as.integer))
@@ -52,8 +46,6 @@ ggplot(gdp_df_long, aes(x = YEAR, y = value, color = variable)) +
 # Load required library
 library(tidyr)
 
-# Reshape the data into long format
-# Create a new column combining YEAR and STATE columns
 gdp_df$GDP <- paste(gdp_df$YEAR, colnames(gdp_df)[2:length(gdp_df)], sep = "_")
 
 
@@ -62,14 +54,26 @@ gdp_df_long <- reshape(gdp_df, varying = list(colnames(gdp_df)[2:length(gdp_df)]
                        new.row.names = 1:10000, direction = "long")
 gdp_df_long
 head(gdp_df)
-# Replace periods with spaces in the column names under the STATE column
 gdp_df_long$STATE <- gsub("\\.", " ", gdp_df_long$STATE)
-# Remove the column named 'id'
 gdp_df_long <- gdp_df_long[, !names(gdp_df_long) %in% c("id")]
+str(gdp_df_long)
+gdp_df_long$STATE <- gsub("ANDAMAN   NICOBAR ISLANDS", "ANDAMAN AND NICOBAR ISLANDS", gdp_df_long$STATE)
+gdp_df_long$STATE <- gsub("JAMMU   KASHMIR", "JAMMU AND KASHMIR", gdp_df_long$STATE)
 
+new_df$state <- toupper(new_df$state)
+print(new_df)
+str(new_df)
+merged_df <- merge(new_df, gdp_df_long, by.x = c("year", "state"), by.y = c("YEAR", "STATE"), all = FALSE)
+merged_df
 
+str(merged_df)
+
+write.csv(merged_df, file = "merged_csv.csv", row.names = FALSE)
 # Summary of Work Done:
-
+# ANDAMAN AND NICOBAR ISLANDS
+#ANDAMAN   NICOBAR ISLANDS
+#JAMMU AND KASHMIR
+#JAMMU   KASHMIR
 # For gwq_df:
 # - Read the data from the "gwq.csv" file and selected specific columns.
 # - Created a new dataframe, removing entries with null values in the residualsodiumcarbonate column.
