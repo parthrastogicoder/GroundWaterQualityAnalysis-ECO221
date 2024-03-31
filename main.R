@@ -65,7 +65,7 @@ print(new_df)
 str(new_df)
 merged_df <- merge(new_df, gdp_df_long, by.x = c("year", "state"), by.y = c("YEAR", "STATE"), all = FALSE)
 merged_df
-
+merged_df$district <- toupper(merged_df$district)
 str(merged_df)
 
 write.csv(merged_df, file = "merged_csv.csv", row.names = FALSE)

@@ -10,3 +10,10 @@ ggplot(merged_df, aes(x = GDP, y = residualsodiumcarbonate)) +
 # Assuming you have already performed the regression analysis and stored it in 'regression_results'
 
 
+# Scatter plot of residualsodiumcarbonate against GDP with cool aesthetics
+ggplot(regression_results, aes(x = GDP, y = Residuals)) +
+  geom_point() +
+  labs(title = "Residuals vs GDP",
+       x = "GDP",
+       y = "Residuals") +
+  theme_minimal()
