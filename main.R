@@ -4,6 +4,7 @@ setwd(current_directory)
 gwq_df <- read.csv("gwq.csv")
 selected_columns <- gwq_df[, c("country", "state", "district", "year", "dyid", "residualsodiumcarbonate")]
 new_df <- data.frame(selected_columns)
+new_df$state <- gsub("Tamilnadu", "TAMIL NADU", new_df$state)
 head(new_df)
 new_df <- new_df[complete.cases(new_df$residualsodiumcarbonate), ]
 print(names(new_df))

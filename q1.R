@@ -42,3 +42,8 @@ ggplot(regression_results, aes(x = Year, y = R_squared)) +
        x = "GDP",
        y = "Coefficient of GDP") +
   theme_minimal()
+
+reg <- lm(residualsodiumcarbonate ~ GDP, data = merged_df)
+summary(reg)
+# Assuming 'reg' is your linear regression model
+

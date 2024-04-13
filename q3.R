@@ -1,4 +1,8 @@
-residual_sum_yearwise <- aggregate(Residuals ~ Year, regression_results, sum)
+residuals <- residuals(reg)
 
-# Print the result
-print(residual_sum_yearwise)
+# Print the sum of residuals
+residual_sum <- sum(residuals)
+print(residual_sum)
+# plot the histogram
+hist(residuals,breaks = 150, xlab = "Residuals", ylab = "Frequency", main = "Histogram of Residuals")
+
