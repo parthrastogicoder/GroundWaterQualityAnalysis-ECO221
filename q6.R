@@ -1,14 +1,4 @@
-# regression_results2 <- data.frame(Year = numeric(),
-#                                  GDP = numeric(),
-#                                  Coefficients = numeric(),
-#                                  Intercept = numeric(),
-#                                  R_squared = numeric(),
-#                                  stringsAsFactors = FALSE)
-# merged_df$residuals <- NA
 
-# Iterate through each unique year in merged_df
-
-# Initialize empty vectors or lists to store coefficients and R-squared values
 coefficients_list <- list()
 r_squared_values <- numeric()
 
@@ -25,7 +15,7 @@ for (year in sort(unique(left_merged_df$year))) {
   # Store R-squared value
   r_squared_values <- c(r_squared_values, summary(regression_model_yearwise)$r.squared)
 }
-r_squared_values
+# r_squared_values
 # Print coefficients and R-squared values for each year
 for (year in sort(unique(left_merged_df$year))) {
   print(paste("Year:", year))
@@ -36,4 +26,3 @@ for (year in sort(unique(left_merged_df$year))) {
   cat("\n")
 }
 
-# regression_results2

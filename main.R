@@ -60,7 +60,7 @@ gdp_df_long <- gdp_df_long[, !names(gdp_df_long) %in% c("id")]
 str(gdp_df_long)
 gdp_df_long$STATE <- gsub("ANDAMAN   NICOBAR ISLANDS", "ANDAMAN AND NICOBAR ISLANDS", gdp_df_long$STATE)
 gdp_df_long$STATE <- gsub("JAMMU   KASHMIR", "JAMMU AND KASHMIR", gdp_df_long$STATE)
-
+gdp_df_long$STATE <- gsub("PUDUCHERRY", "PONDICHERRY", gdp_df_long$STATE)
 new_df$state <- toupper(new_df$state)
 print(new_df)
 str(new_df)
@@ -70,24 +70,3 @@ merged_df$district <- toupper(merged_df$district)
 str(merged_df)
 
 write.csv(merged_df, file = "merged_csv.csv", row.names = FALSE)
-# Summary of Work Done:
-# ANDAMAN AND NICOBAR ISLANDS
-#ANDAMAN   NICOBAR ISLANDS
-#JAMMU AND KASHMIR
-#JAMMU   KASHMIR
-# For gwq_df:
-# - Read the data from the "gwq.csv" file and selected specific columns.
-# - Created a new dataframe, removing entries with null values in the residualsodiumcarbonate column.
-# - Aggregated the data state-wise for every year, taking the mean of residualsodiumcarbonate.
-# - Capitalized every letter in the state column.
-
-# For gdp_df:
-# - Read the data from the "gdp.csv" file.
-# - Removed the last 3 characters from all entries in the YEAR column.
-# - Converted all entries from string to integer.
-# - Summed the values of the ANDHRA.PRADESH and TELANGANA columns into one ANDHRA.PRADESH column, handling null values.
-# - Scaled the entries below the first occurrences of 2011 and 2004, and then removed these rows.
-# - Plotted the yearwise GDP graph for every state.
-# - Reshaped the data into long format, combining the YEAR and state names to create a new GDP column.
-# - Replaced periods with spaces in the column names under the STATE column and removed the column named 'id'.
-

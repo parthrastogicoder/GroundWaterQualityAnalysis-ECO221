@@ -34,7 +34,8 @@ dfbeta_values <- dfbetas(reg2)
 print(dfbeta_values)
 # Assuming 'df' is your dataframe and 'column_name' is the name of the column you want to remove
 merged_df <- subset(left_merged_df, select = -c(residuals))
-
+merged_df <- subset(left_merged_df, select = -c(dyid))
+head(merged_df)
 result <- 2 / sqrt(5315)
 print(result)
 indices <- which(apply(abs(dfbeta_values), 1, function(x) all(x > result)))
