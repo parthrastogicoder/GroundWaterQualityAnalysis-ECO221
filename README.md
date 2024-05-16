@@ -19,21 +19,21 @@ This project aims to analyze the relationship between groundwater quality (GWQ),
 - **Data Merging**: Merge district-year level GWQ data with state-year wise SDP data, and then merge the resultant dataset with district-level Gini index data.
 
 ### 2. Regression Analysis
-Estimate the following regression model:
+Estimated the following regression model:
 \[ GWQ_{i,t} = \beta_0 + \beta_1 SDP_{i,t} + \beta_2 SDP_{i,t}^2 + \beta_3 SDP_{i,t}^3 + \beta_4 Gini_{i,t} + u_{i,t} \]
-- Summarize the regression results in a table.
-- Interpret the coefficients and overall model fit.
+- Summarized the regression results in a table.
+- Interpreted the coefficients and overall model fit.
 
 ### 3. Non-linear Relationship Analysis
 Enhance the regression model to reflect the environmental Kuznets curve hypothesis.
-- Include polynomial terms for SDP.
-- Summarize the results in a table.
-- Prepare a detailed summary statistics table for all variables.
-- Identify and address any outliers or influential observations.
+- Included polynomial terms for SDP.
+- Summarized the results in a table.
+- Prepared a detailed summary statistics table for all variables.
+- Identified and addressed any outliers or influential observations.
 
 ### 4. Year and Regional Analysis
-- Examine whether the relationship between SDP and GWQ differs by year.
-- Enhance the model to examine differences across regions within India, as defined by RBI.
+- Examined whether the relationship between SDP and GWQ differs by year.
+- Enhanced the model to examine differences across regions within India, as defined by RBI.
 
 ## Output
 - **Tables**: Regression results, summary statistics.
